@@ -1,0 +1,56 @@
+// Only adapt the Element Plus primitives used by the game.
+.game-dialog-overlay {
+  background: rgba(108, 37, 217, 0.9);
+  backdrop-filter: blur(6px);
+
+  &--shop,
+  &--log {
+    background: rgba(5, 5, 5, 0.84);
+  }
+
+  .el-overlay-dialog {
+    display: grid;
+    place-items: center;
+    padding: 20px;
+  }
+
+  .el-dialog.modal-window {
+    margin: 0;
+    color: var(--ink);
+    // Element Plus adds body/header wrappers; preserve the original grid flow.
+    > .el-dialog__header {
+      display: none;
+    }
+
+    > .el-dialog__body {
+      display: contents;
+      color: inherit;
+      font: inherit;
+    }
+  }
+}
+
+.el-popover.el-popper.chip-popover {
+  max-width: calc(100vw - 56px);
+  min-width: 0;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  padding: 10px;
+  color: var(--ink);
+  background: white;
+  box-shadow: 5px 5px 0 var(--ink);
+  font: 900 11px/normal Impact, "Arial Black", "Microsoft YaHei UI", sans-serif;
+  text-align: left;
+  rotate: -1deg;
+
+  .el-popper__arrow::before {
+    border: 3px solid var(--ink);
+    background: white;
+  }
+}
+
+@media (max-width: 520px) {
+  .game-dialog-overlay .el-overlay-dialog {
+    padding: 12px;
+  }
+}

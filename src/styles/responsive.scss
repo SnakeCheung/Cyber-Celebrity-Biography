@@ -1,0 +1,220 @@
+// Fit the available CSS viewport, including desktop browser zoom and phone safe areas.
+.game-layout,
+.start-screen,
+.game-scroll,
+.modal-window {
+  min-width: 0;
+}
+
+.start-screen__actions .ui-button {
+  padding-inline: 12px;
+  font-size: clamp(23px, 3.4dvh, 30px);
+}
+
+.start-screen__mission {
+  // Leave room above the decorative zigzag for wrapped text on narrow screens.
+  padding-bottom: 28px;
+}
+
+.start-screen__mission p span {
+  text-wrap: balance;
+}
+
+@media (min-width: 761px) and (pointer: fine) {
+  .start-screen__title-layer {
+    font-size: clamp(35px, 4.7dvh, 50px);
+  }
+
+  .action-card__copy strong {
+    font-size: clamp(17px, 2.1dvh, 21px);
+  }
+
+  .action-card__body {
+    min-height: clamp(64px, 8dvh, 80px);
+  }
+}
+
+// Keep shadows and rotated corners inside the viewport. Only the panel scrolls.
+.game-dialog-overlay {
+  --dialog-gap: 24px;
+
+  .el-overlay-dialog {
+    padding: calc(var(--dialog-gap) + var(--safe-top))
+      calc(var(--dialog-gap) + var(--safe-right))
+      calc(var(--dialog-gap) + var(--safe-bottom))
+      calc(var(--dialog-gap) + var(--safe-left));
+    overflow: hidden;
+  }
+
+  .el-dialog.modal-window {
+    max-width: 100%;
+    max-height: calc(100dvh - 2 * var(--dialog-gap) - var(--safe-top) - var(--safe-bottom));
+    overflow-wrap: anywhere;
+    scroll-padding-block: 16px;
+  }
+}
+
+.event-option__copy,
+.shop-card__copy,
+.shop-wallet {
+  min-width: 0;
+}
+
+@media (max-width: 760px), (max-height: 600px) {
+  .game-dialog-overlay {
+    --dialog-gap: 18px;
+
+    .el-dialog.modal-window {
+      transform: none;
+    }
+  }
+
+  .modal-window--log .log-list {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .event-visual__image {
+    max-height: min(26dvh, 205px);
+  }
+
+  .ending-visual__image {
+    max-height: min(30dvh, 260px);
+  }
+}
+
+@media (max-width: 520px) {
+  .modal-window {
+    padding: 12px;
+  }
+
+  .modal-window--shop .modal-window__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px 10px;
+    padding-top: 8px;
+  }
+
+  .shop-title {
+    padding: 7px 10px;
+    font-size: clamp(20px, 6vw, 28px);
+  }
+
+  .shop-close-button {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .shop-wallet {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: calc(100% - 12px);
+    margin-inline: 6px;
+    gap: 6px;
+    padding: 7px;
+  }
+
+  .shop-wallet__stat {
+    min-width: 0;
+    gap: 4px;
+    padding: 5px 3px;
+  }
+
+  .shop-wallet__icon {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .shop-wallet__stat strong {
+    font-size: 20px;
+  }
+
+  .event-option {
+    padding: 38px 10px 10px;
+  }
+
+  .event-option::before {
+    inset: 0 0 auto;
+    width: auto;
+    height: 28px;
+    border-right: 0;
+    border-bottom: 3px solid var(--ink);
+  }
+
+  .event-option__index {
+    top: 4px;
+    left: 8px;
+    width: auto;
+    transform: none;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+
+  .event-option::after {
+    top: 4px;
+    right: 8px;
+  }
+
+  .event-option__copy {
+    padding-right: 0;
+  }
+}
+
+@media (pointer: coarse) {
+  .phone-home {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .chip-card,
+  .ui-button--small,
+  .shop-close-button,
+  .shop-card__bottom .ui-button,
+  .event-continue {
+    min-height: 44px;
+  }
+
+  .chip-card {
+    padding-block: 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-height: 520px) {
+  .start-screen {
+    --start-title-gap: 10px;
+    padding-top: calc(16px + var(--safe-top));
+  }
+
+  .start-screen__crest {
+    height: 70px;
+  }
+
+  .start-screen__crest-icon {
+    height: 66px;
+  }
+
+  .start-screen__scroll {
+    margin-bottom: 16px;
+  }
+
+  .topbar {
+    min-height: 44px;
+  }
+
+  .stats-panel {
+    padding-block: 12px;
+  }
+
+  .bottom-nav {
+    padding-top: 6px;
+    padding-bottom: calc(6px + var(--safe-bottom));
+  }
+
+  .event-visual__image,
+  .ending-visual__image {
+    max-height: 120px;
+  }
+}
